@@ -1,0 +1,8 @@
+1.1    2004-05-18
+
+  - Initial version.
+
+1.2    2004-05-18
+
+  - Really dumb Makefile.PL typo that broke the dist name.
+  - Removed extra warning from new() if no connection could be made.

@@ -1,9 +1,9 @@
 package Net::IMAP::Simple::SSL;
-# $Id: SSL.pm,v 1.1 2004/05/18 16:39:10 cwest Exp $
+# $Id: SSL.pm,v 1.2 2004/05/18 16:49:49 cwest Exp $
 use strict;
 
 use vars qw[$VERSION];
-$VERSION = (qw$Revision: 1.1 $)[1];
+$VERSION = (qw$Revision: 1.2 $)[1];
 
 use IO::Socket::SSL;
 use base qw[Net::IMAP::Simple];
@@ -19,7 +19,7 @@ sub new {
     $self = { %options };
     $self->{count} = 0;
     $self->{sock} = new IO::Socket::SSL( "$server:993" )
-        or (warn IO::Socket::SSL::errstr and return);
+        or return;
     $self->{sock}->getline();
 
     bless $self, $class;
