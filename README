@@ -1,5 +1,5 @@
 NAME
-    Net::IMAP::Simple::SSL - Subclass of Net::IMAP::Simple with SSL support
+    Net::IMAP::Simple::SSL - SSL support for Net::IMAP::Simple
 
 SYNOPSIS
       use Net::IMAP::Simple::SSL;

@@ -1,30 +1,15 @@
 package Net::IMAP::Simple::SSL;
-# $Id: SSL.pm,v 1.2 2004/05/18 16:49:49 cwest Exp $
+# $Id: SSL.pm,v 1.3 2004/06/29 11:52:38 cwest Exp $
 use strict;
 
 use vars qw[$VERSION];
-$VERSION = (qw$Revision: 1.2 $)[1];
+$VERSION = (qw$Revision: 1.3 $)[1];
 
 use IO::Socket::SSL;
 use base qw[Net::IMAP::Simple];
 
-sub new {
-    my ( $class, $server, %options ) = @_;
-    my ( $self );
-
-    if ( ref( $class ) ) {
-        $class = ref( $class );
-    }
-
-    $self = { %options };
-    $self->{count} = 0;
-    $self->{sock} = new IO::Socket::SSL( "$server:993" )
-        or return;
-    $self->{sock}->getline();
-
-    bless $self, $class;
-    return $self;
-}
+sub _port         { 993               }
+sub _sock_from    { 'IO::Socket::SSL' }
 
 1;
 
@@ -32,7 +17,7 @@ __END__
 
 =head1 NAME
 
-Net::IMAP::Simple::SSL - Subclass of Net::IMAP::Simple with SSL support
+Net::IMAP::Simple::SSL - SSL support for Net::IMAP::Simple
 
 =head1 SYNOPSIS
 
